@@ -8,9 +8,9 @@ Web5 is a set of protocols that provides decentralized identity with application
 
 - [WIP-01: did:web5 Method Specification](01.md)
 - [WIP-02: did:web5 Method Local ID Extension](02.md)
-- [WIP-03: DID Web5 PDS](03.md)
-- [WIP-04: DID Web5 Nostr](04.md)
-- [WIP-05: Client-Side Signing for Web5](05.md)
+- [WIP-03: DID Web5 PDS Overview](03.md)
+- [WIP-04: DID Web5 Nostr Document](04.md)
+- [WIP-05: Client-Side Signing and Key Migration](05.md)
 
 ## License
 
