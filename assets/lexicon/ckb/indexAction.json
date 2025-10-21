@@ -1,0 +1,51 @@
+{
+  "lexicon": 1,
+  "id": "fans.web5.ckb.indexAction",
+  "defs": {
+    "main": {
+      "type": "procedure",
+      "description": "Execute an authentication/session action with a signed message.",
+      "input": {
+        "encoding": "application/json",
+        "schema": {
+          "type": "object",
+          "required": ["did", "message", "signingKey", "signedBytes", "index"],
+          "properties": {
+            "did": { "type": "string" },
+            "message": { "type": "string" },
+            "signingKey": { "type": "string" },
+            "signedBytes": { "type": "string" },
+            "ckbAddr": { "type": "string" },
+            "index": { "type": "union", "refs": ["#createSession", "#deleteAccount"] }
+          }
+        }
+      },
+      "output": {
+        "encoding": "application/json",
+        "schema": {
+          "type": "object",
+          "required": ["result"],
+          "properties": {
+            "result": { "type": "union", "refs": ["#createSessionResult", "#deleteAccountResult"] }
+          }
+        }
+      }
+    },
+    "createSession": { "type": "object", "properties": {} },
+    "deleteAccount": { "type": "object", "properties": {} },
+    "createSessionResult": {
+      "type": "object",
+      "required": ["accessJwt", "refreshJwt", "handle", "did"],
+      "properties": {
+        "accessJwt": { "type": "string" },
+        "refreshJwt": { "type": "string" },
+        "handle": { "type": "string" },
+        "did": { "type": "string" },
+        "didDoc": {},
+        "email": { "type": "string" },
+        "emailConfirmed": { "type": "boolean" }
+      }
+    },
+    "deleteAccountResult": { "type": "object", "properties": {} }
+  }
+}

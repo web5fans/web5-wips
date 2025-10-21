@@ -1,0 +1,58 @@
+{
+  "lexicon": 1,
+  "id": "fans.web5.ckb.indexQuery",
+  "defs": {
+    "main": {
+      "type": "query",
+      "description": "Read-only index queries.",
+      "parameters": {
+        "type": "params",
+        "properties": {
+          "index": { "type": "union", "refs": ["#firstItem", "#secondItem", "#thirdItem", "#fourthItem"] }
+        }
+      },
+      "output": {
+        "encoding": "application/json",
+        "schema": {
+          "type": "object",
+          "required": ["result"],
+          "properties": {
+            "result": { "type": "union", "refs": ["#firstItemResult", "#secondItemResult", "#thirdItemResult", "#fourthItemResult"] }
+          }
+        }
+      }
+    },
+    "firstItem": { "type": "object", "properties": {} },
+    "secondItem": { "type": "object", "properties": {} },
+    "thirdItem": {
+      "type": "object",
+      "required": ["did"],
+      "properties": { "did": { "type": "string" } }
+    },
+    "fourthItem": {
+      "type": "object",
+      "required": ["did"],
+      "properties": { "did": { "type": "string" } }
+    },
+    "firstItemResult": {
+      "type": "object",
+      "required": ["result"],
+      "properties": { "result": { "type": "integer" } }
+    },
+    "secondItemResult": {
+      "type": "object",
+      "required": ["result"],
+      "properties": { "result": { "type": "integer" } }
+    },
+    "thirdItemResult": {
+      "type": "object",
+      "required": ["result"],
+      "properties": { "result": { "type": "integer" } }
+    },
+    "fourthItemResult": {
+      "type": "object",
+      "required": ["result"],
+      "properties": { "result": { "type": "string" } }
+    }
+  }
+}

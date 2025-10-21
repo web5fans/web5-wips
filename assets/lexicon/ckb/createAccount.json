@@ -1,0 +1,39 @@
+{
+  "lexicon": 1,
+  "id": "fans.web5.ckb.createAccount",
+  "defs": {
+    "main": {
+      "type": "procedure",
+      "description": "Finalize account creation with the signed payload returned by preCreateAccount.",
+      "input": {
+        "encoding": "application/json",
+        "schema": {
+          "type": "object",
+          "required": ["handle", "signingKey", "root", "ckbAddr"],
+          "properties": {
+            "handle": { "type": "string" },
+            "signingKey": { "type": "string" },
+            "password": { "type": "string" },
+            "root": { "type": "ref", "ref": "fans.web5.ckb.defs#signedRoot" },
+            "ckbAddr": { "type": "string" },
+            "inviteCode": { "type": "string" }
+          }
+        }
+      },
+      "output": {
+        "encoding": "application/json",
+        "schema": {
+          "type": "object",
+          "required": ["handle", "did", "accessJwt", "refreshJwt"],
+          "properties": {
+            "handle": { "type": "string" },
+            "did": { "type": "string" },
+            "didDoc": {},
+            "accessJwt": { "type": "string" },
+            "refreshJwt": { "type": "string" }
+          }
+        }
+      }
+    }
+  }
+}
