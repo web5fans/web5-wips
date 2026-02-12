@@ -1,0 +1,38 @@
+{
+  "lexicon": 1,
+  "id": "fans.web5.ckb.preCreateAccount",
+  "defs": {
+    "main": {
+      "type": "procedure",
+      "description": "Pre-flight step for account creation. Returns the unsigned data that must be signed.",
+      "input": {
+        "encoding": "application/json",
+        "schema": {
+          "type": "object",
+          "required": ["handle", "did"],
+          "properties": {
+            "handle": { "type": "string" },
+            "did": { "type": "string" },
+            "signingKey": { "type": "string" },
+            "inviteCode": { "type": "string" }
+          }
+        }
+      },
+      "output": {
+        "encoding": "application/json",
+        "schema": {
+          "type": "object",
+          "required": ["did", "rev", "data", "version", "unSignBytes"],
+          "properties": {
+            "did": { "type": "string" },
+            "rev": { "type": "string" },
+            "data": { "type": "string" },
+            "prev": { "type": "string" },
+            "version": { "type": "integer", "minimum": 0, "maximum": 255 },
+            "unSignBytes": { "type": "string" }
+          }
+        }
+      }
+    }
+  }
+}

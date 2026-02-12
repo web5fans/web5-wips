@@ -1,0 +1,36 @@
+{
+  "lexicon": 1,
+  "id": "fans.web5.ckb.preIndexAction",
+  "defs": {
+    "main": {
+      "type": "procedure",
+      "description": "Pre-flight step for authentication/session actions.",
+      "input": {
+        "encoding": "application/json",
+        "schema": {
+          "type": "object",
+          "required": ["did", "index"],
+          "properties": {
+            "did": { "type": "string" },
+            "ckbAddr": { "type": "string" },
+            "index": { "type": "union", "refs": ["#createSession", "#deleteAccount"] }
+          }
+        }
+      },
+      "output": {
+        "encoding": "application/json",
+        "schema": {
+          "type": "object",
+          "required": ["did", "handle", "message"],
+          "properties": {
+            "did": { "type": "string" },
+            "handle": { "type": "string" },
+            "message": { "type": "string" }
+          }
+        }
+      }
+    },
+    "createSession": { "type": "object", "properties": {} },
+    "deleteAccount": { "type": "object", "properties": {} }
+  }
+}

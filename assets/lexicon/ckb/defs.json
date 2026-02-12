@@ -1,0 +1,18 @@
+{
+  "lexicon": 1,
+  "id": "fans.web5.ckb.defs",
+  "defs": {
+    "signedRoot": {
+      "type": "object",
+      "required": ["did", "rev", "data", "version", "signedBytes"],
+      "properties": {
+        "did":         { "type": "string" },
+        "rev":         { "type": "string" },
+        "data":        { "type": "string" },
+        "prev":        { "type": "string" },
+        "version":     { "type": "integer", "minimum": 0, "maximum": 255 },
+        "signedBytes": { "type": "string" }
+      }
+    }
+  }
+}

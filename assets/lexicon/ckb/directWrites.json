@@ -1,0 +1,61 @@
+{
+  "lexicon": 1,
+  "id": "fans.web5.ckb.directWrites",
+  "defs": {
+    "main": {
+      "type": "procedure",
+      "description": "Apply a batch of repo writes that have been signed.",
+      "input": {
+        "encoding": "application/json",
+        "schema": {
+          "type": "object",
+          "required": ["repo", "writes", "signingKey", "root"],
+          "properties": {
+            "repo": { "type": "string" },
+            "validate": { "type": "boolean", "default": true },
+            "writes": {
+              "type": "array",
+              "items": { "type": "union", "refs": ["#create", "#update", "#delete"] }
+            },
+            "swapCommit": { "type": "string" },
+            "signingKey": { "type": "string" },
+            "ckbAddr": { "type": "string" },
+            "root": { "type": "ref", "ref": "fans.web5.ckb.defs#signedRoot" }
+          }
+        }
+      },
+      "output": {
+        "encoding": "application/json",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "commit": { "type": "ref", "ref": "com.atproto.repo.defs#commitMeta" },
+            "results": {
+              "type": "array",
+              "items": { "type": "union", "refs": ["#createResult", "#updateResult", "#deleteResult"] }
+            }
+          }
+        }
+      }
+    },
+    "createResult": {
+      "type": "object",
+      "required": ["uri", "cid"],
+      "properties": {
+        "uri": { "type": "string" },
+        "cid": { "type": "string" },
+        "validationStatus": { "type": "string" }
+      }
+    },
+    "updateResult": {
+      "type": "object",
+      "required": ["uri", "cid"],
+      "properties": {
+        "uri": { "type": "string" },
+        "cid": { "type": "string" },
+        "validationStatus": { "type": "string" }
+      }
+    },
+    "deleteResult": { "type": "object", "properties": {} }
+  }
+}

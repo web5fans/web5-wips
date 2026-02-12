@@ -1,0 +1,67 @@
+{
+  "lexicon": 1,
+  "id": "fans.web5.ckb.preDirectWrites",
+  "defs": {
+    "main": {
+      "type": "procedure",
+      "description": "Pre-flight step for a batch repo write. Returns the unsigned data that must be signed.",
+      "input": {
+        "encoding": "application/json",
+        "schema": {
+          "type": "object",
+          "required": ["repo", "writes"],
+          "properties": {
+            "repo": { "type": "string" },
+            "validate": { "type": "boolean", "default": true },
+            "writes": {
+              "type": "array",
+              "items": { "type": "union", "refs": ["#create", "#update", "#delete"] }
+            },
+            "swapCommit": { "type": "string" }
+          }
+        }
+      },
+      "output": {
+        "encoding": "application/json",
+        "schema": {
+          "type": "object",
+          "required": ["did", "rev", "data", "version", "unSignBytes"],
+          "properties": {
+            "did": { "type": "string" },
+            "rev": { "type": "string" },
+            "data": { "type": "string" },
+            "prev": { "type": "string" },
+            "version": { "type": "integer", "minimum": 0, "maximum": 255 },
+            "unSignBytes": { "type": "string" }
+          }
+        }
+      }
+    },
+    "create": {
+      "type": "object",
+      "required": ["collection", "value"],
+      "properties": {
+        "collection": { "type": "string" },
+        "rkey": { "type": "string" },
+        "value": {}
+      }
+    },
+    "update": {
+      "type": "object",
+      "required": ["collection", "rkey", "value"],
+      "properties": {
+        "collection": { "type": "string" },
+        "rkey": { "type": "string" },
+        "value": {}
+      }
+    },
+    "delete": {
+      "type": "object",
+      "required": ["collection", "rkey"],
+      "properties": {
+        "collection": { "type": "string" },
+        "rkey": { "type": "string" }
+      }
+    }
+  }
+}
